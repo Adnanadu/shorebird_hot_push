@@ -1,3 +1,6 @@
+#sample of code running in flutter via terminal
+flutter run --flavor stable -t lib/main.dart
+
 # shore_bird_hot_push
 
 1. State Management with Riverpod
