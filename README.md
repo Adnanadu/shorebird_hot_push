@@ -33,6 +33,9 @@ Allows the user to switch between update tracks (e.g., stable, beta, staging) us
 
 # shore_bird_installation
 
+package : 
+# flutter pub add shorebird_code_push
+
 1. shoreBird Installation in CLi
 Set-ExecutionPolicy RemoteSigned -scope CurrentUser # Needed to execute remote scripts
 iwr -UseBasicParsing 'https://raw.githubusercontent.com/shorebirdtech/install/main/install.ps1'|iex
