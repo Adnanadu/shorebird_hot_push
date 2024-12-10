@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Shorebird Code Push Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
       home: const MyHomePage(),
@@ -22,16 +22,21 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// Providers
+// state of the shorebird updater
 final updaterProvider = Provider((ref) => ShorebirdUpdater());
+
+///read current patch
 final currentPatchProvider = FutureProvider<Patch?>((ref) {
   final updater = ref.watch(updaterProvider);
   return updater.readCurrentPatch();
 });
+
 final isUpdaterAvailableProvider = Provider((ref) {
   final updater = ref.watch(updaterProvider);
   return updater.isAvailable;
 });
+
+///track of the update
 final updateTrackProvider = StateProvider((ref) => UpdateTrack.stable);
 final isCheckingForUpdatesProvider = StateProvider((ref) => false);
 
@@ -107,7 +112,6 @@ class MyHomePage extends HookConsumerWidget {
       appBar: AppBar(
         title: const Text('Shorebird Code Push'),
       ),
-      // final data=ref.watch(currentPatchProvider);
       body: Column(
         children: [
           if (!isUpdaterAvailable) const _ShorebirdUnavailable(),
@@ -185,6 +189,7 @@ class _CurrentPatchVersion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text('Current patch version:'),
@@ -203,6 +208,7 @@ class _TrackPicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const Text('Update track:'),
         SegmentedButton<UpdateTrack>(
