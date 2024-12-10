@@ -113,6 +113,7 @@ class MyHomePage extends HookConsumerWidget {
         title: const Text('Shorebird Code Push'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           if (!isUpdaterAvailable) const _ShorebirdUnavailable(),
           const Spacer(),
@@ -189,7 +190,6 @@ class _CurrentPatchVersion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text('Current patch version:'),
@@ -208,7 +208,6 @@ class _TrackPicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const Text('Update track:'),
         SegmentedButton<UpdateTrack>(
